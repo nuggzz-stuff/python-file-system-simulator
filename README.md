@@ -7,10 +7,18 @@ A command line file management system built in Python using lists and dictionari
 This project is a command line simulation of a basic file management system, created as part of my independent learning in Python. It demonstrates fundamental programming concepts including lists, dictionaries, and user interaction.
 
 ## Features
-- Create, rename, and delete files
+
+### v1
+- Create files with names, content, and authors
 - View stored files
-- View how many files are stored
-- Menu based interface
+- Search for files
+- Delete files
+
+### v2
+- Added password authentication
+- Added three login attempts before access is denied
+- Refactored authentication into a reusable login() function
+- Improved code organisation for future development
 
 ## Skills demonstrated
 - Python programming
