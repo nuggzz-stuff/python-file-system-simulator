@@ -28,7 +28,6 @@ This project is a command line simulation of a basic file management system, cre
 - Problem solving
 
 ## Future improvements
-- Password authentication
 - Persistent file storage
 - User accounts
 - Add GUI
