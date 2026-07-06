@@ -19,11 +19,11 @@ This project is a command line simulation of a basic file management system, cre
 - User input validation
 - Problem solving
 
-## Future Improvements
+## Future improvements
 - Password authentication
 - Persistent file storage
 - User accounts
 - Add GUI
 
-## Why did I make this
-I created this project to practise Python programming while exploring how a simple file management system could be simulated through the command line.
+## Why did I make this?
+To practise Python programming while exploring how a simple file management system could be simulated through the command line.
