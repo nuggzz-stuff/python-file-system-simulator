@@ -30,7 +30,7 @@ while True:
 
     elif choice == 2:
         if len(files) == 0:
-            print("no files yet.")
+            print("no files yet. :(")
         else:
             for f in files:
                 print("\n---")
@@ -52,7 +52,7 @@ while True:
                 break
 
         if not found:
-            print("file not found.")
+            print("file not found. :(")
 
     elif choice == 4:
         filename = input("enter file name to delete: ")
