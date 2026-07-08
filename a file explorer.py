@@ -1,5 +1,11 @@
-def login():
-    password = "1234"
+files = [] # hi i am at the start
+
+# functions and that
+
+# login + attempts although the password is set by ME
+password = "1234"
+
+def login(): 
     attempts = 3
 
     while attempts > 0:
@@ -17,17 +23,48 @@ def login():
     print("access denied")
     return False
 
-files = []
+# saving the files and making them readable in a document
+def savefiles():
+    with open("afileexplorersave.txt", "w") as file:
+        for f in files:
+            file.write(
+                f["name"] + "|" +
+                f["content"] + "|" +
+                f["author"] + "\n"
+            )
+
+# loading the files and making them accessable in variables
+def loadfiles():
+    try:
+        with open("afileexplorersave.txt", "r") as file:
+            for line in file:
+                name, content, author = line.strip().split("|")
+
+                savedfile = {
+                    "name": name,
+                    "content": content,
+                    "author": author
+                }
+
+                files.append(savedfile)
+
+    except FileNotFoundError:
+            print("no save file found yet, you are new!")
+
+# main program
+
+loadfiles()
 
 if login():
     
-    while True:
+    while True: # nice menu huh
         print("total files:", len(files))
         print("1. add new file")
         print("2. view all files")
         print("3. search for a file")
         print("4. delete file")
-        print("5. exit")
+        print("5. edit file")
+        print("6. exit")
 
         try:
             choice = int(input("choose 1-5: "))
@@ -36,19 +73,20 @@ if login():
             print("invalid input, please enter a number 1-5")
             continue
 
-        if choice == 1:
+        if choice == 1: # asks for all the content info whatever needed
             name = input("file name: ")
             content = input("file content: ")
             author = input("file author: ")
 
-            file = {
-                "name": name,
+            file = { #organises it nicely with the variables 
+                "name": name, # key for the files name
                 "content": content,
                 "author": author
             }
 
-            files.append(file)
-            print("file added!")
+            files.append(file) # appends it to my file (below)
+            savefiles() #saves :D
+            print("file added!") # confirmation
             print()
 
         elif choice == 2:
@@ -56,7 +94,7 @@ if login():
                 print("no files yet. :(")
                 print()
             else:
-                for f in files:
+                for f in files: # go through all files and print them all cause we want them all
                     print("file name:", f["name"])
                     print("file author:", f["author"])
                     print()
@@ -66,8 +104,8 @@ if login():
 
             found = False
 
-            for f in files:
-                if f["name"] == filename:
+            for f in files:  # below, the .lower() makes it so anything like Hello and hello can both appear as a search result
+                if f["name"].lower() == filename.lower(): # the 'name' is a key/variable, as seen above. should match
                     print("\n--- file opened ---")
                     print("name:", f["name"])
                     print("content:", f["content"])
@@ -86,7 +124,7 @@ if login():
             found = False
 
             for f in files:
-                if f["name"] == filename:
+                if f["name"].lower() == filename.lower(): 
 
                     confirm = input("are you sure? y/n: ")
 
@@ -97,6 +135,7 @@ if login():
                         break
 
                     files.remove(f)
+                    savefiles() #saves that the file is gone, else it will come back
                     print("file deleted successfully.")
                     print()
                     found = True
@@ -107,6 +146,30 @@ if login():
                 print()
 
         elif choice == 5:
+            filename = input("enter file name to edit: ")
+
+            found = False
+
+            for f in files:
+                if f["name"].lower() == filename.lower(): # if what is searched matches the files assigned 'name'
+
+                    print("current content:", f["content"])
+                    
+                    newcontent = input("enter changes to content: ")
+                    f["content"] = newcontent
+                    savefiles()
+                    print("file updated!")
+                    print()
+
+                    found = True
+                    break
+
+            if not found:
+                print("file not found. :(")
+                print() 
+
+        elif choice == 6:
+            savefiles() # final backup
             print("goodbye")
             break
 
