@@ -24,7 +24,20 @@ This project is a command line simulation of a basic file management system, cre
 - Added persistent file storage using text files
 - Files can now be saved and loaded between program sessions
 - Added the ability to edit existing files
-- Improved searching with case insensitive matching
+
+### v4: Current version
+- Simulated storage system based on file content size
+- Configurable storage limit
+- Storage usage warnings when nearing capacity
+- Prevents files from being created if storage is exceeded
+- Prevents rewrites that would exceed available storage
+- Improved case-insensitive file searching and deletion
+
+The simulator uses a simplified storage model where each character in a file's content represents 1 byte.
+
+e.g. hello = 5 'bytes' of storage used
+
+The system tracks total usage and prevents files being added if they exceed the storage limit.
 
 ## Skills demonstrated
 - Python programming
