@@ -39,6 +39,9 @@ e.g. hello = 5 'bytes' of storage used
 
 The system tracks total usage and prevents files being added if they exceed the storage limit.
 
+### future v4.1
+- Metadata
+
 ## Skills demonstrated
 - Python programming
 - Lists and dictionaries
