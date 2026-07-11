@@ -1,5 +1,8 @@
 files = [] # hi i am at the start
 
+# fake storage simulator
+storagelimit = 2000
+
 # functions and that
 
 # login + attempts although the password is set by ME
@@ -22,6 +25,15 @@ def login():
 
     print("access denied")
     return False
+
+# fake storage
+def storagesize():
+    total = 0
+
+    for f in files:
+        total = total + len(f["content"])
+
+    return total
 
 # saving the files and making them readable in a document
 def savefiles():
@@ -59,12 +71,17 @@ if login():
     
     while True: # nice menu huh
         print("total files:", len(files))
+
+        if storagesize() >= storagelimit * 0.9: # 90% of whatever storagelimit i decide to choose
+            print("warning: storage almost full!")
+        
         print("1. add new file")
         print("2. view all files")
         print("3. search for a file")
         print("4. delete file")
-        print("5. edit file")
-        print("6. exit")
+        print("5. rewrite file")
+        print("6. view storage")
+        print("7. exit")
 
         try:
             choice = int(input("choose 1-5: "))
@@ -84,10 +101,15 @@ if login():
                 "author": author
             }
 
-            files.append(file) # appends it to my file (below)
-            savefiles() #saves :D
-            print("file added!") # confirmation
-            print()
+            if storagesize() + len(content) > storagelimit: # if fake storage + new storage (characters) is bigger than storage limit
+                    print("not enough storage! file not added. :(")
+                    print()
+
+            else:
+                files.append(file) # appends it to my file (below)
+                savefiles() #saves :D
+                print("file added!") # confirmation
+                print()
 
         elif choice == 2:
             if len(files) == 0:
@@ -124,7 +146,7 @@ if login():
             found = False
 
             for f in files:
-                if f["name"].lower() == filename.lower(): 
+                if f["name"].lower() == filename.lower(): # is what user entered same as the found file wanted
 
                     confirm = input("are you sure? y/n: ")
 
@@ -155,20 +177,35 @@ if login():
 
                     print("current content:", f["content"])
                     
-                    newcontent = input("enter changes to content: ")
-                    f["content"] = newcontent
-                    savefiles()
-                    print("file updated!")
-                    print()
+                    newcontent = input("enter changes to content (complete change): ") #cant add little edits, maybe ill do append something later
 
-                    found = True
-                    break
+                    oldsize = len(f["content"])  # original size
+                    newsize = len(newcontent) # new size of file is by converting the new content to a length
 
-            if not found:
-                print("file not found. :(")
-                print() 
+                    difference = newsize - oldsize
+
+                    if storagesize() + difference > storagelimit: # if the storage size + change in storage size is above limit
+                        print("not enough storage! file not updated.")
+                        print()
+
+                    else:
+                        f["content"] = newcontent # updates
+                        savefiles()
+                        print("file updated!")
+                        print()
+
+                        found = True
+                        break
+
+                    if not found:
+                        print("file not found. :(")
+                        print()
 
         elif choice == 6:
+            print("you have used:",  storagesize() , "bytes!")
+            print()
+
+        elif choice == 7:
             savefiles() # final backup
             print("goodbye")
             break
