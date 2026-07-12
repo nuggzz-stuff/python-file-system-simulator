@@ -1,6 +1,3 @@
-# python-file-system-simulator
-A simulated file management system built in Python, featuring persistent storage, search, editing, deletion, storage limits, and file metadata.
-
 # Python File System Simulator
 
 ## Overview
