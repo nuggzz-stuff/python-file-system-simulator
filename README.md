@@ -1,5 +1,5 @@
 # python-file-system-simulator
-A command line file management system built in Python using lists and dictionaries.
+A simulated file management system built in Python, featuring persistent storage, search, editing, deletion, storage limits, and file metadata.
 
 # Python File System Simulator
 
