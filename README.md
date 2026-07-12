@@ -2,8 +2,8 @@
 
 ## Overview
 A simulated file management system built in Python. 
-This project started as a simple file storage program and gradually expanded into a more realistic file explorer.
-Currently on v4 (version 4).
+This project started as a simple file storage program and gradually expanded into a more realistic file explorer, featuring persistent storage, search, editing, deletion, storage limits, and file metadata.
+Currently on v4.
 
 ## Features
 
