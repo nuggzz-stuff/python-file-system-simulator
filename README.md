@@ -29,9 +29,8 @@ This project is a command line simulation of a basic file management system, cre
 - Simulated storage system based on file content size
 - Configurable storage limit
 - Storage usage warnings when nearing capacity
-- Prevents files from being created if storage is exceeded
-- Prevents rewrites that would exceed available storage
-- Improved case-insensitive file searching and deletion
+- Prevents files and rewrites from being created if storage is exceeded
+- Metadata that can update when a file is rewritten ('created' and 'modified')
 
 The simulator uses a simplified storage model where each character in a file's content represents 1 byte.
 
@@ -39,8 +38,12 @@ e.g. hello = 5 'bytes' of storage used
 
 The system tracks total usage and prevents files being added if they exceed the storage limit.
 
-### future v4.1
-- Metadata
+### Future features I would like to add
+- Ability to edit more than just file content
+- Folders system
+- Tags and favourites
+- Order by largest/smallest sized file
+- GUI
 
 ## Skills demonstrated
 - Python programming
