@@ -1,4 +1,5 @@
 files = [] # hi i am at the start
+from datetime import datetime
 
 # fake storage simulator
 storagelimit = 2000
@@ -42,7 +43,9 @@ def savefiles():
             file.write(
                 f["name"] + "|" +
                 f["content"] + "|" +
-                f["author"] + "\n"
+                f["author"] + "|" +
+                str(f["created"]) + "|" +
+                str(f["modified"]) + "\n"
             )
 
 # loading the files and making them accessable in variables
@@ -50,12 +53,14 @@ def loadfiles():
     try:
         with open("afileexplorersave.txt", "r") as file:
             for line in file:
-                name, content, author = line.strip().split("|")
+                name, content, author, created, modified = line.strip().split("|")
 
                 savedfile = {
                     "name": name,
                     "content": content,
-                    "author": author
+                    "author": author,
+                    "created": created,
+                    "modified": modified
                 }
 
                 files.append(savedfile)
@@ -95,15 +100,19 @@ if login():
             content = input("file content: ")
             author = input("file author: ")
 
-            file = { #organises it nicely with the variables 
+            currenttime = datetime.now().strftime("%d/%m/%Y %H:%M")
+
+            file = { #organises it nicely with the variables
                 "name": name, # key for the files name
                 "content": content,
-                "author": author
+                "author": author,
+                "created": currenttime,
+                "modified": currenttime
             }
 
             if storagesize() + len(content) > storagelimit: # if fake storage + new storage (characters) is bigger than storage limit
-                    print("not enough storage! file not added. :(")
-                    print()
+                print("not enough storage! file not added. :(")
+                print()
 
             else:
                 files.append(file) # appends it to my file (below)
@@ -119,6 +128,8 @@ if login():
                 for f in files: # go through all files and print them all cause we want them all
                     print("file name:", f["name"])
                     print("file author:", f["author"])
+                    print("created:", f["created"])
+                    print("modified:", f["modified"])
                     print()
 
         elif choice == 3:
@@ -132,6 +143,8 @@ if login():
                     print("name:", f["name"])
                     print("content:", f["content"])
                     print("author:", f["author"])
+                    print("created:", f["created"])
+                    print("modified:", f["modified"]) # e.g name: 'file (f)' 'name of the file' 
                     print()
                     found = True
                     break
@@ -168,7 +181,7 @@ if login():
                 print()
 
         elif choice == 5:
-            filename = input("enter file name to edit: ")
+            filename = input("enter file name to edit content of: ")
 
             found = False
 
@@ -189,7 +202,9 @@ if login():
                         print()
 
                     else:
-                        f["content"] = newcontent # updates
+                        currenttime = datetime.now().strftime("%d/%m/%Y %H:%M")
+                        f["content"] = newcontent
+                        f["modified"] = currenttime # gives it a nice new modified date
                         savefiles()
                         print("file updated!")
                         print()
