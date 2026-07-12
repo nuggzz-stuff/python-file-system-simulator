@@ -1,28 +1,30 @@
 # Python File System Simulator
 
 ## Overview
-This project is a command line simulation of a basic file management system, created as part of my independent learning in Python. It demonstrates fundamental programming concepts including lists, dictionaries, and user interaction.
+A simulated file management system built in Python. 
+This project started as a simple file storage program and gradually expanded into a more realistic file explorer.
+Currently on v4 (version 4).
 
 ## Features
 
-### v1
+### v1: basic
 - Created files with names, content, and authors
 - Viewed stored files
 - Searched for files
 - Deleted files
 
-### v2
+### v2: authenticaion
 - Added password authentication
 - Added three login attempts before access is denied
 - Refactored authentication into a reusable login() function
 - Improved code organisation for future development
 
-### v3
+### v3: persistent file storage and file editing
 - Added persistent file storage using text files
 - Files can now be saved and loaded between program sessions
 - Added the ability to edit existing files
 
-### v4: Current version
+### v4: simulated storage size and metadata
 - Simulated storage system based on file content size
 - Configurable storage limit
 - Storage usage warnings when nearing capacity
