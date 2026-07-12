@@ -38,13 +38,6 @@ e.g. hello = 5 'bytes' of storage used
 
 The system tracks total usage and prevents files being added if they exceed the storage limit.
 
-### Future features I would like to add
-- Ability to edit more than just file content
-- Folders system
-- Tags and favourites
-- Order by largest/smallest sized file
-- GUI
-
 ## Skills demonstrated
 - Python programming
 - Lists and dictionaries
@@ -56,8 +49,10 @@ The system tracks total usage and prevents files being added if they exceed the 
 ## Future improvements
 - Graphical user interface
 - User accounts with separate files
-- More advanced file organisation, including folders
+- More advanced file organisation, including folders, tags, and favourites
 - Improved storage methods
+- Ability to edit more than just file content
+- Order by largest/smallest sized file
 
 ## Why did I make this?
 To practise Python programming while exploring how a simple file management system could be developed. The project has been expanded gradually to improve functionality, organisation, and usability.
