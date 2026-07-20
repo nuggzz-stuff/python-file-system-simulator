@@ -3,7 +3,7 @@
 ## Overview
 A simulated file management system built in Python. 
 This project started as a simple file storage program and gradually expanded into a more realistic file explorer, featuring persistent storage, search, editing, deletion, storage limits, and file metadata.
-Currently on v4.
+Currently on v4 (final).
 
 ## Features
 
@@ -24,7 +24,7 @@ Currently on v4.
 - Files can now be saved and loaded between program sessions
 - Added the ability to edit existing files
 
-### v4: simulated storage size and metadata
+### v4: simulated storage size and metadata (Final)
 - Simulated storage system based on file content size
 - Configurable storage limit
 - Storage usage warnings when nearing capacity
@@ -45,7 +45,7 @@ The system tracks total usage and prevents files being added if they exceed the 
 - User input validation
 - Problem solving and debugging
 
-## Future improvements
+## Potential future features
 - Graphical user interface
 - User accounts with separate files
 - More advanced file organisation, including folders, tags, and favourites
